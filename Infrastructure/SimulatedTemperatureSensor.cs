@@ -30,13 +30,15 @@ public class SimulatedTemperatureSensor : UntypedActor
         if (message is ReadSensorValue)
         {
             var r = new Random();
-            var value = r.Next(0, 5) + _temperatureBase;
+            var value = (r.Next(0, 500) / 100m) + _temperatureBase;
+
             _readerActor.Tell(new RespondSensorValue(value));
         }
         else if (message is AdjustTemperature adjust)
         {
             _temperatureBase += adjust.TemperatureAdjustment;
-            Self.Tell(new ReadSensorValue(), Self);
+            Thread.Sleep(4000);
+            Console.WriteLine($"Temperature adjusted to {_temperatureBase}  C°");
         }
     }
 }

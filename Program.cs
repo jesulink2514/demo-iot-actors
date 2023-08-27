@@ -23,7 +23,7 @@ do
             break;
         case "r":
             var temperature = await temperatureActor.Ask<RespondSensorValue>(new ReadSensorValue());
-            Console.WriteLine($"Temperature: {temperature.Value}");
+            Console.WriteLine($"Temperature: {temperature.Value} C°");
             break;
         case "q":
             await system.Terminate();
