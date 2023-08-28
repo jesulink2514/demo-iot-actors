@@ -5,13 +5,15 @@ namespace demo_iot_actors.Actors;
 public class TemperatureDeviceActor : UntypedActor
 {
     private IActorRef? _deviceActor;
-    protected override void PreStart()
+    public TemperatureDeviceActor()
     {
         _deviceActor = Context.ActorOf(Props.Create(() => new SimulatedTemperatureSensor(Self)), "device");
     }
 
+    //internal state
     private decimal currentTemperature = 0.0m;
 
+    //message handling
     override protected void OnReceive(object message)
     {
         if (message is RespondSensorValue sensor)
