@@ -21,7 +21,7 @@ public class TemperatureDeviceActor : ReceiveActor
     {
         Receive<AdjustTemperature>(adjust =>
         {
-            Console.WriteLine("Already adjusting temperature");
+            Console.WriteLine("[Forbidden] Already adjusting temperature...");
         });
 
         Receive<RespondSensorValue>(rs =>
