@@ -2,9 +2,6 @@ using Akka.Actor;
 
 namespace demo_iot_actors.Infrastructure;
 
-public record ReadSensorValue();
-public record RespondSensorValue(decimal Value);
-public record AdjustTemperature(decimal TemperatureAdjustment);
 public class SimulatedTemperatureSensor : UntypedActor
 {
     private readonly IActorRef _readerActor;
